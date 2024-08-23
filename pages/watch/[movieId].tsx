@@ -14,7 +14,7 @@ const Watch = () => {
   if (data?.videos) {
 
     const index = data.videos.results.findIndex(
-        (element: Element) => element?.type === "Trailer" || 
+        (element: any) => element?.type === "Trailer" || 
         "Opening Credits" ||
          "Featurette" ||
          "Clip"
@@ -23,7 +23,7 @@ const Watch = () => {
    videoUrl = data.videos?.results[index]?.key
 
 }
-  console.log(data);
+ 
   return (
     <div className="h-screen w-screen bg-black">
       <nav

@@ -17,7 +17,7 @@ console.log(movie)
   if (movie?.videos) {
 
     const index = movie.videos.results.findIndex(
-        (element: Element) => element?.type === "Trailer" || 
+        (element: any) => element?.type === "Trailer" || 
         "Opening Credits" ||
          "Featurette" ||
          "Clip"
@@ -100,7 +100,7 @@ scale-100
 
   <p className='text-green-400 font-semibold text-lg'>New</p>
   <p className='text-white text-lg'>{handleRuntime(movie.runtime)}</p>
-  <p className='text-white text-lg'>{movie.genres.map((genre) => genre.name).join(", ")}</p>
+  <p className='text-white text-lg'>{movie.genres.map((genre:any) => genre.name).join(", ")}</p>
   <p className='text-white text-lg'>{movie?.description !== "default"
             ? movie?.description.slice(0, 150)
             : movie?.overview.slice(0, 150)}

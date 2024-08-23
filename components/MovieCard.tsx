@@ -7,7 +7,7 @@ import { BiChevronDown } from "react-icons/bi";
 import useInfoModal from "@/hooks/useInfoModal";
 import useBillBoard from "@/hooks/useBillboard";
 interface MovieCardProps {
-  data: Record<string, any>;
+  data: any;
 }
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
     const router = useRouter()
@@ -140,7 +140,7 @@ onClick={()=>router.push(`/watch/${data?.id}`)}
         <p className="text-white text-[10px] lg:text-sm">{handleRuntime(data.runtime)}</p>
      </div>
      <div className="flex flex-row mt-4 gap-2 items-center">
-        <p className="text-white text-[10px] lg:text-sm">{data.genres.map((genre) => genre.name).join(", ")}</p>
+        <p className="text-white text-[10px] lg:text-sm">{data.genres.map((genre:any) => genre.name).join(", ")}</p>
      </div>
       </div>
       </div>

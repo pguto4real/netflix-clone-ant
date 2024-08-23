@@ -4,7 +4,7 @@ import useSWR from "swr"
 import { create } from "zustand";
 
 export interface ModalStoreInterface {
-    movie?: string
+    movie?: any
     isOpen: boolean;
     openModal: (movie: string) =>void;
     closeModal: () => void

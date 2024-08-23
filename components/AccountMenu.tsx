@@ -1,15 +1,16 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
+import { User } from "next-auth";
 import { signOut } from "next-auth/react";
 import React from "react";
 
 interface AccountMenuProps {
   visible?: boolean;
-  currentUser?:string
+  currentUser?:any
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ visible ,currentUser}) => {
 
-  // const { data: currentUser, mutate } = useCurrentUser();
+
   return !visible ? null : (
     <div
       className="bg-black w-56 absolute top-14

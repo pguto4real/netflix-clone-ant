@@ -19,12 +19,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             take: 1,
             skip: randomIndex
         })
-        const data = (randomMovies[0])
+        const data:{
+            videos?:any
+        } = (randomMovies[0])
+
+        
 
         if (data?.videos) {
 
             const index = data.videos.results.findIndex(
-                (element: Element) => element?.type === "Trailer" || 
+                (element: any) => element?.type === "Trailer" || 
                 "Opening Credits" ||
                  "Featurette" ||
                  "Clip"
