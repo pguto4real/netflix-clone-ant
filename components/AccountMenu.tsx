@@ -1,11 +1,15 @@
+import useCurrentUser from "@/hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
 import React from "react";
 
 interface AccountMenuProps {
   visible?: boolean;
+  currentUser?:string
 }
 
-const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
+const AccountMenu: React.FC<AccountMenuProps> = ({ visible ,currentUser}) => {
+
+  // const { data: currentUser, mutate } = useCurrentUser();
   return !visible ? null : (
     <div
       className="bg-black w-56 absolute top-14
@@ -18,7 +22,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
             alt=""
             className="w-8 rounded-md"
           />
-          <p className="text-white text-sm group-hover/item:underline">ewewe</p>
+          <p className="text-white text-sm group-hover/item:underline">{currentUser?.name}</p>
         </div>
         <hr className="bg-gray-600 border-0 h-px my-4" />
         <div
@@ -28,7 +32,7 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
             Sign out of all Netflix
         </div>
       </div>
-      hshshs
+     
     </div>
   );
 };

@@ -1,13 +1,21 @@
 import useBillBoard from "@/hooks/useBillboard";
 import { imageBaseUrl } from "@/constant/movie";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import ReactPlayer from "react-player";
 import { FaPlay } from "react-icons/fa";
 import { BsInfoCircle } from "react-icons/bs";
+import PlayButton from "./PlayButton";
+import useInfoModal from "@/hooks/useInfoModal";
 export default function BillBoard() {
   const [trailer, setTrailer] = useState("");
-
+  const { openModal } = useInfoModal();
+ 
   const { data } = useBillBoard();
+
+  const handleOpemModal = useCallback(() => {
+    openModal(data);
+  }, [openModal, data]);
+
   return (
     <div className="text-white relative w-full h-[56.25vw]">
       <iframe
@@ -30,8 +38,8 @@ export default function BillBoard() {
           {data?.original_title !== "default"
             ? data?.original_title
             : data?.original_name !== "default"
-              ? data?.original_name
-              : data?.title}
+            ? data?.original_name
+            : data?.title}
         </p>
         <p
           className="
@@ -54,15 +62,11 @@ export default function BillBoard() {
             : data?.overview.length > 150 && "..."}
         </p>
         <div className="flex flex-row items-center mt-3 md:mt-4 gap-3">
-          <button className="banner__button bg-white text-black">
-            <FaPlay className="mr-1" /> Play
-          </button>
+          <PlayButton movieId={data?.id} />
           <button
+            onClick={handleOpemModal}
             className="banner__button bg-[gray]/70 text-white"
-            onClick={() => {
-              // setCurrentMovie(movie);
-              // setShowModal(true);
-            }}
+           
           >
             <BsInfoCircle className="mr-1 " />
             More Info

@@ -15,9 +15,16 @@ html{
 }
 
 .iframe{
-  @apply w-[300%] h-[100%] ml-[-100%]
+  @apply w-full h-[100%] ml-[-100%]
 }
 
+.iframe-watch{
+  @apply w-full h-full
+}
+
+.iframe-modal{
+  @apply w-full h-full brightness-[60%] object-cover
+}
 .banner__button{
   @apply 
   flex 
@@ -31,5 +38,6 @@ html{
   font-semibold
   transition
   hover:opacity-75 
+  w-auto
   
 }

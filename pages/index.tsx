@@ -1,20 +1,32 @@
 import BillBoard from "@/components/BillBoard";
+import InfoModal from "@/components/InfoModal";
+
 import MovieList from "@/components/MovieList";
 import Navbar from "@/components/Navbar";
+import useCurrentUser from "@/hooks/useCurrentUser";
 import useFavourites from "@/hooks/useFavourites";
+import useInfoModal from "@/hooks/useInfoModal";
 import useMovieList from "@/hooks/useMovieList";
 
 import { NextPageContext } from "next";
 import { getSession, signOut } from "next-auth/react";
+import { useRecoilValue } from "recoil";
 
 
 export default function Home() {
   const { data:movies = [] } = useMovieList();
   const { data:favourites = [] } = useFavourites();
+const {data } = useCurrentUser()
+  const {isOpen,closeModal} = useInfoModal()
+  console.log(isOpen)
 
   return (
     <>
-      <Navbar />
+    {
+      isOpen && <InfoModal onClose={closeModal}/>
+    }
+    
+      <Navbar currentUser = {data}/>
       <BillBoard />
       <div className="pb-40 text-white">
         <MovieList title="Trending Now" data={movies}/>

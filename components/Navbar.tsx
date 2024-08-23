@@ -3,12 +3,14 @@ import NavbarItem from "./NavbarItem";
 import { BsBell, BsChevronDown, BsChevronUp, BsSearch } from "react-icons/bs";
 import MobileMenu from "./MobileMenu";
 import AccountMenu from "./AccountMenu";
-
-export default function Navbar() {
+interface NavBarProps{
+  currentUser?:string
+}
+const Navbar:React.FC<NavBarProps>=({currentUser}) =>{
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
-
+console.log(currentUser)
   const TOP_OFFSET = 66;
 
   useEffect(() => {
@@ -81,10 +83,11 @@ export default function Navbar() {
               }`}
             />
 
-            <AccountMenu visible={showAccountMenu} />
+            <AccountMenu currentUser={currentUser} visible={showAccountMenu} />
           </div>
         </div>
       </div>
     </nav>
   );
 }
+export default Navbar 

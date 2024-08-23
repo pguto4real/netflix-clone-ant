@@ -1,13 +1,22 @@
 import { imageBaseUrl } from "@/constant/movie";
-import React from "react";
+import React, { useCallback } from "react";
 import { BsFillPlayFill } from "react-icons/bs";
 import FavouriteButton from "./FavouriteButton";
+import { useRouter } from "next/router";
+import { BiChevronDown } from "react-icons/bi";
+import useInfoModal from "@/hooks/useInfoModal";
+import useBillBoard from "@/hooks/useBillboard";
 interface MovieCardProps {
   data: Record<string, any>;
 }
 const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
-
-
+    const router = useRouter()
+    const { openModal } = useInfoModal();
+  
+    const handleOpemModal = useCallback(() => {
+      openModal(data);
+    }, [openModal, data]);
+  
     const handleRuntime=(runtime:any)=>{
         if (runtime) {
             let newRuntime = "";
@@ -102,11 +111,29 @@ className="
             transition 
             hover:bg-neutral-300
 "
-onClick={()=>{}}
+onClick={()=>router.push(`/watch/${data?.id}`)}
 >
 <BsFillPlayFill className="text-black" size={30}/>
 </div>
-<FavouriteButton movieId={data.id}/>
+<FavouriteButton movieId={data?.id}/>
+<div onClick={handleOpemModal} className="
+              cursor-pointer ml-auto
+              group/item
+              w-6 lg:w-10
+              h-6 lg:h-10
+              border-white
+              border-2
+              rounded-full
+              flex justify-center
+              items-center
+              transition
+              hover:border-neutral-300
+">
+  <BiChevronDown size={30} className="text-white 
+  group-hover/item:text-neutral-300"/>
+  
+</div>
+<div></div>
         </div>
         <p className="text-green-400 font-semibold mt-4"> New <span className="text-white">2003</span></p>
      <div className="flex flex-row mt-4 gap-2 items-center">

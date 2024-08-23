@@ -21,14 +21,19 @@ const Auth = () => {
     );
   }, []);
   const login = useCallback(async () => {
+    console.log('i got here')
     try {
+      console.log('i got here1')
       const signInData = await signIn("credentials", {
         email,
         password,
         redirect: false,
         callbackUrl: "/profiles",
       });
+
+      console.log('i got here2')
     } catch (error:any) {
+      console.log('i got here3')
       setErrorMessage(error);
     }
   }, [email, password]);
@@ -47,7 +52,7 @@ const Auth = () => {
       setErrorMessage(error.response.data.error);
       console.error(error.response.data.error);
     }
-  }, [email, name, password]);
+  }, [email, name, password,login]);
 
   return (
     <div
