@@ -19,8 +19,9 @@ export default function BillBoard() {
   return (
     <div className="text-white relative w-full h-[56.25vw]">
       <iframe
-        className="iframe"
-        src={`https://www.youtube.com/embed/${data?.videoUrl}?autoplay=1&controls=0&mute=1&loop=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&playlist=${data?.videoUrl}`}
+      className="iframe"
+           src={`https://www.youtube.com/embed/${data?.videoUrl}?autoplay=1&controls=0&mute=1&loop=1&rel=0&enablejsapi=1&playlist=${data?.videoUrl}`}
+        // src={`https://www.youtube.com/embed/${data?.videoUrl}?autoplay=1&controls=0&mute=0&loop=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1&playlist=${data?.videoUrl}`}
         title="YouTube video player"
       ></iframe>
       <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">

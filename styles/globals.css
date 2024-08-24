@@ -15,7 +15,7 @@ html{
 }
 
 .iframe{
-  @apply w-full h-[100%] ml-[-100%]
+  @apply w-full h-[100%] 
 }
 
 .iframe-watch{
